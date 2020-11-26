@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Sergo Bango Bancking | Backend'),
+    'name' => env('APP_NAME', 'Sergo Banjo Bancking | Backend'),
 
     /*
     |--------------------------------------------------------------------------
