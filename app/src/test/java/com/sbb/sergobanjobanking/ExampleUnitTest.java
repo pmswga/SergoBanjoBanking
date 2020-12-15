@@ -1,4 +1,4 @@
-package com.sbb.sergobangobanking;
+package com.sbb.sergobanjobanking;
 
 import org.junit.Test;
 
