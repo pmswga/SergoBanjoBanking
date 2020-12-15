@@ -4,15 +4,78 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:onClick="onLoginButtonClick"
     tools:context=".MainActivity">
 
-    <TextView
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="181dp"
+        android:layout_marginTop="119dp"
+        android:layout_marginEnd="182dp"
+        android:layout_marginBottom="65dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextEmailAddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.658">
+
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:width="150dp"
+            android:onClick="onLoginButtonClick"
+            android:text="@string/login_button_label" />
+
+        <Button
+            android:id="@+id/registrationButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:width="150dp"
+            android:text="Регистрация" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/buttons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/progressBar">
+
+        <EditText
+            android:id="@+id/editTextTextEmailAddress2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="E-mail"
+            android:inputType="textEmailAddress"
+            android:paddingVertical="15dp" />
+
+        <EditText
+            android:id="@+id/editTextTextPassword2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Пароль"
+            android:inputType="textPassword"
+            android:paddingVertical="15dp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

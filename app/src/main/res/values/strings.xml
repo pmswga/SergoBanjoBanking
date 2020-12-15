@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Sergo Banjo Banking</string>
+    <string name="title_activity_home">MainActivity</string>
+    <string name="title_home">Портфель</string>
+    <string name="title_dashboard">Биржа</string>
+    <string name="title_notifications">Настройки</string>
+
+
+    <string name="login_button_label">Войти</string>
+
 </resources>
