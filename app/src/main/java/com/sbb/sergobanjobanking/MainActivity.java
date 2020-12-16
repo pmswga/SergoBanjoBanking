@@ -2,21 +2,39 @@ package com.sbb.sergobanjobanking;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
+
+    Button loginButton, toRegistrationButton;
+
+    EditText emailInput, passwordInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        loginButton = (Button) findViewById(R.id.loginButton);
+        toRegistrationButton = (Button) findViewById(R.id.toRegistrationButton);
+
+        emailInput = (EditText) findViewById(R.id.emailLoginInput);
+        passwordInput = (EditText) findViewById(R.id.passwordLoginInput);
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
+    protected void onStart() {
+        super.onStart();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
     }
 
     @Override
@@ -25,19 +43,39 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onRestart() {
-        super.onRestart();
+    protected void onPause() {
+        super.onPause();
     }
 
-
-    public void onLoginButtonClick(View view)
+    @SuppressLint("NonConstantResourceId")
+    public void onClick(View view)
     {
         switch (view.getId())
         {
             case R.id.loginButton:
             {
-                Intent intent = new Intent(this, HomeActivity.class);
-                startActivity(intent);
+                Intent i = new Intent(this, HomeActivity.class);
+
+
+                //check login & pass
+
+                startActivity(i);
+            } break;
+            case R.id.toRegistrationButton:
+            {
+                Intent i = new Intent(this, RegistrationActivity.class);
+
+                String email = emailInput.getText().toString();
+                if (!email.isEmpty()) {
+                    i.putExtra("email", email);
+                }
+
+                String password = passwordInput.getText().toString();
+                if (!password.isEmpty()) {
+                    i.putExtra("password", password);
+                }
+
+                startActivity(i);
             } break;
         }
 

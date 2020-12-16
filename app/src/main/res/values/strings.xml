@@ -1,11 +1,38 @@
 <resources>
     <string name="app_name">Sergo Banjo Banking</string>
     <string name="title_activity_home">MainActivity</string>
-    <string name="title_home">Портфель</string>
-    <string name="title_dashboard">Биржа</string>
-    <string name="title_notifications">Настройки</string>
 
 
-    <string name="login_button_label">Войти</string>
+    <!-- HomeActivity -->
+    <string name="title_home">Wallet</string>
+    <string name="title_dashboard">Stock market</string>
+    <string name="title_notifications">Settings</string>
+
+
+
+    <!-- MainActivity -->
+    <string name="email_login_input_hint">E-mail</string>
+    <string name="password_login_input_hint">Password</string>
+    <string name="login_button_text">Login</string>
+    <string name="to_registration_button_text">Registration</string>
+
+
+    <!-- RegistrationActivity -->
+
+    <string name="general_caption">General</string>
+    <string name="second_name_input_hint">Second name</string>
+    <string name="first_name_input_hint">First name</string>
+    <string name="patronymic_input_hint">Patronymic</string>
+
+    <string name="passport_caption">Passport</string>
+    <string name="passport_number_hint">Passport number</string>
+    <string name="passport_series_hint">Passport series</string>
+
+    <string name="user_caption">User account</string>
+
+    <string name="back_login_button_text">Back</string>
+    <string name="registration_button_text">Sign up</string>
+
+
 
 </resources>
