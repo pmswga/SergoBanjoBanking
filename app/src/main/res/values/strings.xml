@@ -34,5 +34,16 @@
     <string name="registration_button_text">Sign up</string>
 
 
+    <!-- Settings fragment -->
+    <string name="general_label">General</string>
+    <string name="user_label">User account</string>
+    <string name="second_name_label">Second name:</string>
+    <string name="first_name_label">First name:</string>
+    <string name="patronymic_label">Patronymic:</string>
+
+    <string name="email_label">E-mail:</string>
+
+    <string name="logout_button_text">Logout</string>
+
 
 </resources>

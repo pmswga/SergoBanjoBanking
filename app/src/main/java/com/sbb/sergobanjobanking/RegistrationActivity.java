@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class RegistrationActivity extends AppCompatActivity {
 
@@ -51,6 +52,13 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         }
 
+
+        registrationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), "You are registered", Toast.LENGTH_LONG).show();
+            }
+        });
 
         backLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
