@@ -45,12 +45,8 @@ public class NotificationsFragment extends Fragment {
     EditText profileEmailInput;
     EditText profilePassportInput;
 
-    private NotificationsViewModel notificationsViewModel;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        notificationsViewModel =
-                new ViewModelProvider(this).get(NotificationsViewModel.class);
         root = inflater.inflate(R.layout.fragment_notifications, container, false);
 
         db = DatabaseApp.getInstance().getDatabase();

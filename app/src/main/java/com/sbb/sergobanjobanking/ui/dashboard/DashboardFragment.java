@@ -15,14 +15,10 @@ import com.sbb.sergobanjobanking.ui.components.CompanyCardView;
 
 public class DashboardFragment extends Fragment {
 
-    private DashboardViewModel dashboardViewModel;
-
     LinearLayout companiesList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        dashboardViewModel =
-                new ViewModelProvider(this).get(DashboardViewModel.class);
         View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
         companiesList = (LinearLayout) root.findViewById(R.id.companiesLayout);
