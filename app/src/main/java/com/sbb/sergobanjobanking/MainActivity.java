@@ -4,10 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         emailInput = (EditText) findViewById(R.id.emailLoginInput);
         passwordInput = (EditText) findViewById(R.id.passwordLoginInput);
+
     }
 
     @Override
@@ -48,18 +51,30 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @SuppressLint("NonConstantResourceId")
-    public void onClick(View view)
-    {
+    public void onClick(View view) {
         switch (view.getId())
         {
             case R.id.loginButton:
             {
                 Intent i = new Intent(this, HomeActivity.class);
 
+                String email = emailInput.getText().toString();
+                String password = passwordInput.getText().toString();
+
+                if (email.equals("pmswga@gmail.com") && password.equals("qwerty")) {
+
+                    emailInput.setHintTextColor(Color.BLACK);
+                    passwordInput.setHintTextColor(Color.BLACK);
+                    startActivity(i);
+                    this.finish();
+                } else {
+                    emailInput.setHintTextColor(Color.rgb(173, 0, 0));
+                    passwordInput.setHintTextColor(Color.rgb(173, 0, 0));
+                    Toast.makeText(this, "Incorrect email & login", Toast.LENGTH_LONG).show();
+                }
 
                 //check login & pass
 
-                startActivity(i);
             } break;
             case R.id.toRegistrationButton:
             {

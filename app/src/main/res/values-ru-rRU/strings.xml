@@ -21,9 +21,10 @@
     <string name="registration_button_text">Зарегистрироваться</string>
     <string name="general_label">Общее</string>
     <string name="user_label">Аккаунт</string>
-    <string name="second_name_label">Фамилия:</string>
-    <string name="first_name_label">Имя:</string>
-    <string name="patronymic_label">Отчество:</string>
-    <string name="email_label">Почта:</string>
+    <string name="second_name_label">Фамилия</string>
+    <string name="first_name_label">Имя</string>
+    <string name="patronymic_label">Отчество</string>
+    <string name="email_label">Почта</string>
     <string name="logout_button_text">Выйти</string>
+    <string name="passport_label">Паспорт</string>
 </resources>

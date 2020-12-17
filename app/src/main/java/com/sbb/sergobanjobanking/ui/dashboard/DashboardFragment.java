@@ -33,6 +33,7 @@ public class DashboardFragment extends Fragment {
 
 
         for (int i = 0; i < 10; i++) {
+
             CompanyCardView companyCardView = new CompanyCardView(companiesList.getContext(), "Sber");
 
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 137);
