@@ -2,6 +2,12 @@
     <string name="app_name">Sergo Banjo Banking</string>
     <string name="title_activity_home">MainActivity</string>
 
+    <!-- Messages -->
+    <string name="registration_success_message">You are registered</string>
+    <string name="registration_fail_message">You are not registered</string>
+    <string name="login_success_message">You are logged</string>
+    <string name="login_fail_message">Incorrect email or password</string>
+
 
     <!-- HomeActivity -->
     <string name="title_home">Wallet</string>

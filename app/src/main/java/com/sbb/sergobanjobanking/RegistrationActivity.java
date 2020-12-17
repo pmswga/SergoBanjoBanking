@@ -2,6 +2,7 @@ package com.sbb.sergobanjobanking;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +11,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.sbb.sergobanjobanking.database.AppDatabase;
+import com.sbb.sergobanjobanking.database.DatabaseApp;
+import com.sbb.sergobanjobanking.database.entities.AccountModel;
+import com.sbb.sergobanjobanking.database.entities.ProfileModel;
+import com.sbb.sergobanjobanking.database.entities.UserModel;
+
 public class RegistrationActivity extends AppCompatActivity {
 
     Button backLoginButton, registrationButton;
@@ -17,6 +24,22 @@ public class RegistrationActivity extends AppCompatActivity {
     EditText secondNameInput, firstNameInput, patronymicInput;
     EditText passportNumber, passportSeries;
     EditText emailInput, passwordInput;
+
+    private void setIntentData() {
+        String email = getIntent().getStringExtra("email");
+        if (email != null) {
+            if (!email.isEmpty()) {
+                emailInput.setText(email);
+            }
+        }
+
+        String password = getIntent().getStringExtra("password");
+        if (password != null) {
+            if (!password.isEmpty()) {
+                passwordInput.setText(password);
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,27 +59,44 @@ public class RegistrationActivity extends AppCompatActivity {
         emailInput = (EditText) findViewById(R.id.emailRegInput);
         passwordInput = (EditText) findViewById(R.id.passwordRegInput);
 
-
-        String email = getIntent().getStringExtra("email");
-        if (email != null) {
-            if (!email.isEmpty()) {
-                emailInput.setText(email);
-            }
-        }
-
-
-        String password = getIntent().getStringExtra("password");
-        if (password != null) {
-            if (!password.isEmpty()) {
-                passwordInput.setText(password);
-            }
-        }
-
+        setIntentData();
 
         registrationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), "You are registered", Toast.LENGTH_LONG).show();
+                AppDatabase db = DatabaseApp.getInstance().getDatabase();
+
+                UserModel newUser = new UserModel();
+                newUser.email = emailInput.getText().toString();
+                newUser.password = passwordInput.getText().toString();
+
+                ProfileModel newProfile = new ProfileModel();
+
+                newProfile.secondName = secondNameInput.getText().toString();
+                newProfile.firstName = firstNameInput.getText().toString();
+                newProfile.patronymic = patronymicInput.getText().toString();
+                newProfile.passport = passportNumber.getText().toString() + " " + passportSeries.getText().toString();
+
+                AccountModel newAccount = new AccountModel();
+
+                try
+                {
+                    long idUser = db.userDao().insert(newUser);
+
+                    if (idUser != -1) {
+                        newProfile.idProfile = idUser;
+                        db.profileDao().insert(newProfile);
+
+                        newAccount.idUser = idUser;
+                        db.accountDao().insert(newAccount);
+
+                        Toast.makeText(v.getContext(), getResources().getString(R.string.registration_success_message), Toast.LENGTH_LONG).show();
+
+                        finish();
+                    }
+                } catch (SQLiteConstraintException e) {
+                    Toast.makeText(v.getContext(), getResources().getString(R.string.registration_fail_message), Toast.LENGTH_LONG).show();
+                }
             }
         });
 

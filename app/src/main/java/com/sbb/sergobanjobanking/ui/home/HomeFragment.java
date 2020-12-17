@@ -13,8 +13,20 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.sbb.sergobanjobanking.R;
+import com.sbb.sergobanjobanking.database.AppDatabase;
+import com.sbb.sergobanjobanking.database.DatabaseApp;
+import com.sbb.sergobanjobanking.database.entities.AccountModel;
+import com.sbb.sergobanjobanking.database.entities.UserModel;
+
+import org.w3c.dom.Text;
 
 public class HomeFragment extends Fragment {
+
+    AppDatabase db;
+    UserModel loggedUser;
+    AccountModel accountModel;
+
+    TextView accountBalanceLabel;
 
     private HomeViewModel homeViewModel;
 
@@ -23,6 +35,20 @@ public class HomeFragment extends Fragment {
         homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
+
+        db = DatabaseApp.getInstance().getDatabase();
+
+        accountBalanceLabel = (TextView) root.findViewById(R.id.accountBalanceLabel);
+
+
+
+        loggedUser = db.userDao().getLoggedUser();
+
+        accountModel = db.accountDao().getAccount(loggedUser.idUser);
+
+        if (accountModel != null) {
+            accountBalanceLabel.setText(Double.toString(accountModel.balance));
+        }
 
         return root;
     }

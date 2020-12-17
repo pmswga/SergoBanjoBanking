@@ -1,32 +1,53 @@
 package com.sbb.sergobanjobanking;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.room.Room;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.sbb.sergobanjobanking.database.AppDatabase;
+import com.sbb.sergobanjobanking.database.DatabaseApp;
+import com.sbb.sergobanjobanking.database.entities.UserModel;
+
 public class MainActivity extends AppCompatActivity {
+
+    AppDatabase db;
 
     Button loginButton, toRegistrationButton;
 
     EditText emailInput, passwordInput;
 
+    @SuppressLint("WrongThread")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        db = DatabaseApp.getInstance().getDatabase();
 
         loginButton = (Button) findViewById(R.id.loginButton);
         toRegistrationButton = (Button) findViewById(R.id.toRegistrationButton);
 
         emailInput = (EditText) findViewById(R.id.emailLoginInput);
         passwordInput = (EditText) findViewById(R.id.passwordLoginInput);
+
+        UserModel loggedUser = db.userDao().getLoggedUser();
+
+        if (loggedUser != null) {
+            Intent i = new Intent(this, HomeActivity.class);
+            startActivity(i);
+            this.finish();
+        }
 
     }
 
@@ -61,20 +82,24 @@ public class MainActivity extends AppCompatActivity {
                 String email = emailInput.getText().toString();
                 String password = passwordInput.getText().toString();
 
-                if (email.equals("pmswga@gmail.com") && password.equals("qwerty")) {
 
+                UserModel loginUser = db.userDao().attemptUser(email, password);
+
+                if (loginUser != null) {
+                    Toast.makeText(this, getResources().getString(R.string.login_success_message), Toast.LENGTH_LONG).show();
                     emailInput.setHintTextColor(Color.BLACK);
                     passwordInput.setHintTextColor(Color.BLACK);
+
+                    loginUser.isLogged = 1;
+                    db.userDao().update(loginUser);
+
                     startActivity(i);
                     this.finish();
                 } else {
                     emailInput.setHintTextColor(Color.rgb(173, 0, 0));
                     passwordInput.setHintTextColor(Color.rgb(173, 0, 0));
-                    Toast.makeText(this, "Incorrect email & login", Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, getResources().getString(R.string.login_fail_message), Toast.LENGTH_LONG).show();
                 }
-
-                //check login & pass
-
             } break;
             case R.id.toRegistrationButton:
             {

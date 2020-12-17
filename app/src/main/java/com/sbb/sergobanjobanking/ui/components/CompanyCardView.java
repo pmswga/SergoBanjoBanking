@@ -1,4 +1,4 @@
-package com.sbb.sergobanjobanking.components;
+package com.sbb.sergobanjobanking.ui.components;
 
 import android.content.Context;
 import android.view.ViewGroup;

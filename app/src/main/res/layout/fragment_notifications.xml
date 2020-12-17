@@ -31,8 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Басыров" />
+                android:inputType="textPersonName" />
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -51,8 +50,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Сергей" />
+                android:inputType="textPersonName" />
 
         </androidx.cardview.widget.CardView>
 
@@ -72,8 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="Амирович" />
+                android:inputType="textPersonName" />
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -92,8 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textEmailAddress"
-                android:text="pmswga@gmail.com" />
+                android:inputType="textEmailAddress" />
         </androidx.cardview.widget.CardView>
 
         <TextView
@@ -112,8 +108,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="4518 778721" />
+                android:inputType="textPersonName" />
         </androidx.cardview.widget.CardView>
 
         <Button

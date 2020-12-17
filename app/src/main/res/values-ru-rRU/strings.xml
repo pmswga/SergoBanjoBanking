@@ -27,4 +27,8 @@
     <string name="email_label">Почта</string>
     <string name="logout_button_text">Выйти</string>
     <string name="passport_label">Паспорт</string>
+    <string name="registration_success_message">Вы зарегистрированы</string>
+    <string name="registration_fail_message">Не удалось зарегистрировать</string>
+    <string name="login_success_message">Вы вошли</string>
+    <string name="login_fail_message">Неправильная почта или пароль</string>
 </resources>
