@@ -9,7 +9,7 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,7 +75,7 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/passport_number_hint"
-                android:inputType="textPersonName"
+                android:inputType="numberSigned"
                 android:maxLength="4" />
 
             <EditText
@@ -86,8 +86,9 @@
                 android:layout_weight="1"
                 android:ems="10"
                 android:hint="@string/passport_series_hint"
-                android:inputType="textPersonName"
+                android:inputType="numberSigned"
                 android:maxLength="6" />
+
         </LinearLayout>
 
         <TextView
@@ -123,13 +124,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:text="@string/registration_button_text" />
-
-        <Button
-            android:id="@+id/backLoginButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:text="@string/back_login_button_text" />
 
     </LinearLayout>
 

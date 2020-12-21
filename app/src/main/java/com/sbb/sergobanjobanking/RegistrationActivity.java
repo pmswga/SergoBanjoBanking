@@ -2,10 +2,9 @@ package com.sbb.sergobanjobanking;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.database.sqlite.SQLiteConstraintException;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,11 +17,10 @@ import com.sbb.sergobanjobanking.database.entities.ProfileModel;
 import com.sbb.sergobanjobanking.database.entities.UserModel;
 
 public class RegistrationActivity extends AppCompatActivity {
-
-    Button backLoginButton, registrationButton;
+    Button registrationButton;
 
     EditText secondNameInput, firstNameInput, patronymicInput;
-    EditText passportNumber, passportSeries;
+    EditText passportNumberInput, passportSeriesInput;
     EditText emailInput, passwordInput;
 
     private void setIntentData() {
@@ -41,23 +39,26 @@ public class RegistrationActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        backLoginButton = (Button) findViewById(R.id.backLoginButton);
         registrationButton = (Button) findViewById(R.id.registrationButton);
 
         secondNameInput = (EditText) findViewById(R.id.secondNameInput);
         firstNameInput = (EditText) findViewById(R.id.firstNameInput);
         patronymicInput = (EditText) findViewById(R.id.patronymicInput);
 
-        passportNumber = (EditText) findViewById(R.id.passportNumberInput);
-        passportSeries = (EditText) findViewById(R.id.passportSeriesInput);
+        passportNumberInput = (EditText) findViewById(R.id.passportNumberInput);
+        passportSeriesInput = (EditText) findViewById(R.id.passportSeriesInput);
 
         emailInput = (EditText) findViewById(R.id.emailRegInput);
         passwordInput = (EditText) findViewById(R.id.passwordRegInput);
+
+        getSupportActionBar().setDefaultDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(R.string.registration_activity_title);
 
         setIntentData();
 
@@ -66,44 +67,56 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onClick(View v) {
                 AppDatabase db = DatabaseApp.getInstance().getDatabase();
 
-                UserModel newUser = new UserModel();
-                newUser.email = emailInput.getText().toString();
-                newUser.password = passwordInput.getText().toString();
+                String email = emailInput.getText().toString();
+                String password = passwordInput.getText().toString();
 
-                ProfileModel newProfile = new ProfileModel();
+                String secondName = secondNameInput.getText().toString();
+                String firstName = secondNameInput.getText().toString();
+                String patronymic = secondNameInput.getText().toString();
+                String passportNumber = passportNumberInput.getText().toString();
+                String passportSeries = passportSeriesInput.getText().toString();
 
-                newProfile.secondName = secondNameInput.getText().toString();
-                newProfile.firstName = firstNameInput.getText().toString();
-                newProfile.patronymic = patronymicInput.getText().toString();
-                newProfile.passport = passportNumber.getText().toString() + " " + passportSeries.getText().toString();
-
-                AccountModel newAccount = new AccountModel();
-
-                try
+                if (!secondName.isEmpty() &&
+                        !firstName.isEmpty() &&
+                        !email.isEmpty() &&
+                        !password.isEmpty() &&
+                        !passportNumber.isEmpty() &&
+                        !passportSeries.isEmpty())
                 {
-                    long idUser = db.userDao().insert(newUser);
+                    UserModel newUser = new UserModel();
+                    newUser.email = email;
+                    newUser.password = password;
 
-                    if (idUser != -1) {
-                        newProfile.idProfile = idUser;
-                        db.profileDao().insert(newProfile);
+                    ProfileModel newProfile = new ProfileModel();
 
-                        newAccount.idUser = idUser;
-                        db.accountDao().insert(newAccount);
+                    newProfile.secondName = secondName;
+                    newProfile.firstName = firstName;
+                    newProfile.patronymic = patronymic;
+                    newProfile.passport = passportNumber + " " + passportSeries;
 
-                        Toast.makeText(v.getContext(), getResources().getString(R.string.registration_success_message), Toast.LENGTH_LONG).show();
+                    AccountModel newAccount = new AccountModel();
 
-                        finish();
+                    try
+                    {
+                        long idUser = db.userDao().insert(newUser);
+
+                        if (idUser != -1) {
+                            newProfile.idProfile = idUser;
+                            db.profileDao().insert(newProfile);
+
+                            newAccount.idUser = idUser;
+                            db.accountDao().insert(newAccount);
+
+                            Toast.makeText(v.getContext(), getResources().getString(R.string.registration_success_message), Toast.LENGTH_LONG).show();
+
+                            finish();
+                        }
+                    } catch (SQLiteConstraintException e) {
+                        Toast.makeText(v.getContext(), getResources().getString(R.string.registration_fail_message), Toast.LENGTH_LONG).show();
                     }
-                } catch (SQLiteConstraintException e) {
-                    Toast.makeText(v.getContext(), getResources().getString(R.string.registration_fail_message), Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(v.getContext(), getResources().getString(R.string.registration_warning_message), Toast.LENGTH_LONG).show();
                 }
-            }
-        });
-
-        backLoginButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
             }
         });
     }

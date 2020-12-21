@@ -5,15 +5,16 @@
     <!-- Messages -->
     <string name="registration_success_message">You are registered</string>
     <string name="registration_fail_message">You are not registered</string>
+    <string name="registration_warning_message">Fields doesn\'t empty</string>
     <string name="login_success_message">You are logged</string>
     <string name="login_fail_message">Incorrect email or password</string>
+    <string name="login_warning_message">Fields doesn\'t empty</string>
 
 
     <!-- HomeActivity -->
     <string name="title_home">Wallet</string>
     <string name="title_dashboard">Stock market</string>
     <string name="title_notifications">Settings</string>
-
 
 
     <!-- MainActivity -->
@@ -24,7 +25,7 @@
 
 
     <!-- RegistrationActivity -->
-
+    <string name="registration_activity_title">Registration</string>
     <string name="general_caption">General</string>
     <string name="second_name_input_hint">Second name</string>
     <string name="first_name_input_hint">First name</string>
@@ -52,5 +53,11 @@
 
     <string name="logout_button_text">Logout</string>
 
+
+    <!-- BuyActivity -->
+    <string name="buy_activity_title">Buy stocks</string>
+    <string name="price_text">Price</string>
+    <string name="count_text">Count</string>
+    <string name="buy_button_text">Buy</string>
 
 </resources>

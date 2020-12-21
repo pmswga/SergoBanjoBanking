@@ -31,4 +31,11 @@
     <string name="registration_fail_message">Не удалось зарегистрировать</string>
     <string name="login_success_message">Вы вошли</string>
     <string name="login_fail_message">Неправильная почта или пароль</string>
+    <string name="registration_warning_message">Заполните необходимые поля</string>
+    <string name="login_warning_message">Заполните необходимые поля</string>
+    <string name="registration_activity_title">Регистрация</string>
+    <string name="buy_activity_title">Покупка акций</string>
+    <string name="price_text">Цена</string>
+    <string name="count_text">Количество</string>
+    <string name="buy_button_text">Купить</string>
 </resources>

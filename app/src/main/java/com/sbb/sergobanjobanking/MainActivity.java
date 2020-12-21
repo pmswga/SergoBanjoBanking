@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import android.annotation.SuppressLint;
+import android.app.ActionBar;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import com.sbb.sergobanjobanking.database.AppDatabase;
 import com.sbb.sergobanjobanking.database.DatabaseApp;
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
             this.finish();
         }
 
+
     }
 
     @Override
@@ -82,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
                 String email = emailInput.getText().toString();
                 String password = passwordInput.getText().toString();
 
-
                 UserModel loginUser = db.userDao().attemptUser(email, password);
 
                 if (loginUser != null) {
@@ -98,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     emailInput.setHintTextColor(Color.rgb(173, 0, 0));
                     passwordInput.setHintTextColor(Color.rgb(173, 0, 0));
-                    Toast.makeText(this, getResources().getString(R.string.login_fail_message), Toast.LENGTH_LONG).show();
+                    Toast.makeText(this, getResources().getString(R.string.login_warning_message), Toast.LENGTH_LONG).show();
                 }
             } break;
             case R.id.toRegistrationButton:
