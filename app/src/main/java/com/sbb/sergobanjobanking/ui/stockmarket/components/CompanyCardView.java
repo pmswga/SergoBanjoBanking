@@ -1,4 +1,4 @@
-package com.sbb.sergobanjobanking.ui.dashboard.components;
+package com.sbb.sergobanjobanking.ui.stockmarket.components;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -33,13 +33,13 @@ public class CompanyCardView extends CardView {
 
         companyDescriptionView = new TextView(this.getContext());
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        lp.setMargins(0, companyNameView.getHeight(), 0, 0);
+        lp.setMargins(30, 30, 30, 30);
         companyDescriptionView.setLayoutParams(lp);
         companyDescriptionView.setText(companyModel.description);
 
 
-        constraintLayout.addView(this.companyNameView, this.getWidth());
-        constraintLayout.addView(this.companyDescriptionView, this.getWidth());
+        constraintLayout.addView(this.companyNameView);
+        constraintLayout.addView(this.companyDescriptionView);
     }
 
 }
