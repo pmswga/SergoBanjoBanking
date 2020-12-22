@@ -13,7 +13,7 @@ public interface CompanyDao {
     @Query("SELECT COUNT(*) FROM companies")
     long getCount();
 
-    @Query("SELECT * FROM companies")
+    @Query("SELECT * FROM companies ORDER BY caption")
     CompanyModel[] getAll();
 
     @Query("SELECT * FROM companies WHERE idCompany=:idCompany")

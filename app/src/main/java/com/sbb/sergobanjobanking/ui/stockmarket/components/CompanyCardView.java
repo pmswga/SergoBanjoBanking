@@ -18,11 +18,13 @@ public class CompanyCardView extends CardView {
     TextView companyDescriptionView;
 
     ConstraintLayout constraintLayout;
+    LinearLayout layout;
 
     public CompanyCardView(@NonNull Context context, CompanyModel companyModel) {
         super(context);
-        constraintLayout = new ConstraintLayout(this.getContext());
-        this.addView(constraintLayout);
+        layout = new LinearLayout(getContext());
+        layout.setOrientation(LinearLayout.VERTICAL);
+        this.addView(layout);
 
 
 
@@ -31,6 +33,7 @@ public class CompanyCardView extends CardView {
         companyNameView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         companyNameView.setText(companyModel.caption);
 
+
         companyDescriptionView = new TextView(this.getContext());
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         lp.setMargins(30, 30, 30, 30);
@@ -38,8 +41,8 @@ public class CompanyCardView extends CardView {
         companyDescriptionView.setText(companyModel.description);
 
 
-        constraintLayout.addView(this.companyNameView);
-        constraintLayout.addView(this.companyDescriptionView);
+        layout.addView(this.companyNameView);
+        layout.addView(this.companyDescriptionView);
     }
 
 }

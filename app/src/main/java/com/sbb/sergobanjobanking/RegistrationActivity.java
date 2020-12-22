@@ -71,8 +71,8 @@ public class RegistrationActivity extends AppCompatActivity {
                 String password = passwordInput.getText().toString();
 
                 String secondName = secondNameInput.getText().toString();
-                String firstName = secondNameInput.getText().toString();
-                String patronymic = secondNameInput.getText().toString();
+                String firstName = firstNameInput.getText().toString();
+                String patronymic = patronymicInput.getText().toString();
                 String passportNumber = passportNumberInput.getText().toString();
                 String passportSeries = passportSeriesInput.getText().toString();
 

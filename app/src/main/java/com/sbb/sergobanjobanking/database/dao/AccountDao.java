@@ -3,6 +3,7 @@ package com.sbb.sergobanjobanking.database.dao;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.sbb.sergobanjobanking.database.entities.AccountModel;
 
@@ -15,4 +16,6 @@ public interface AccountDao {
     @Insert
     void insert(AccountModel accountModel);
 
+    @Update
+    void update(AccountModel accountModel);
 }

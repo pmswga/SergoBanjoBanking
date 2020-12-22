@@ -1,6 +1,7 @@
 package com.sbb.sergobanjobanking.database.dao;
 
 import androidx.room.Dao;
+import androidx.room.Insert;
 import androidx.room.Query;
 
 import com.sbb.sergobanjobanking.database.entities.AccountStockModel;
@@ -9,7 +10,9 @@ import com.sbb.sergobanjobanking.database.entities.AccountStockModel;
 public interface AccountStockDao {
 
     @Query("SELECT * FROM account_stocks WHERE idAccount=:idAccount")
-    AccountStockModel getAccountStocks(long idAccount);
+    AccountStockModel[] getAccountStocks(long idAccount);
 
+    @Insert
+    void insert(AccountStockModel accountStockModel);
 
 }

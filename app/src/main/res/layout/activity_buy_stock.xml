@@ -48,11 +48,11 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/editTextNumberSigned"
+            android:id="@+id/stockPriceInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="numberSigned" />
+            android:inputType="none|number" />
 
         <TextView
             android:id="@+id/countStockLabel"
@@ -63,11 +63,12 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/countStockInput"
+            android:id="@+id/stockCountInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:minEms="0" />
 
         <Button
             android:id="@+id/buyStockButton"

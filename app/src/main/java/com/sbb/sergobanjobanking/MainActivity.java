@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         db = DatabaseApp.getInstance().getDatabase();
+        //db.clearAllTables();
 
         loginButton = (Button) findViewById(R.id.loginButton);
         toRegistrationButton = (Button) findViewById(R.id.toRegistrationButton);

@@ -38,4 +38,9 @@
     <string name="price_text">Цена</string>
     <string name="count_text">Количество</string>
     <string name="buy_button_text">Купить</string>
+    <string name="buy_stock_success_message">Акции приобретены</string>
+    <string name="buy_stock_warning_message">Количество акций должно быть меньше лимита</string>
+    <string name="buy_stock_fail_message">Не удалось приобрести акции</string>
+    <string name="buy_price_label">Цена при покупке</string>
+    <string name="sum_stock_label">Итого</string>
 </resources>

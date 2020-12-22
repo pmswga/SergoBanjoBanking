@@ -1,6 +1,7 @@
 package com.sbb.sergobanjobanking.ui.stockmarket;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -44,7 +45,6 @@ public class StockMarketFragment extends Fragment {
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             lp.setMargins(30, 30, 30, 30);
             companyCardView.setLayoutParams(lp);
-
 
             companyCardViews.add(companyCardView);
             companiesList.addView(companyCardView);

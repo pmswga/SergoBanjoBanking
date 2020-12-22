@@ -19,5 +19,5 @@ public class AccountStockModel {
     public long count;
 
     @ColumnInfo(name = "price")
-    public long price;
+    public double price;
 }

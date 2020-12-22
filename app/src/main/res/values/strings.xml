@@ -59,5 +59,10 @@
     <string name="price_text">Price</string>
     <string name="count_text">Count</string>
     <string name="buy_button_text">Buy</string>
+    <string name="buy_stock_success_message">Stock buying successfully</string>
+    <string name="buy_stock_warning_message">Count of stocks must be less then limit</string>
+    <string name="buy_stock_fail_message">Stock buying failure</string>
+    <string name="buy_price_label">Buy price</string>
+    <string name="sum_stock_label">Result</string>
 
 </resources>
